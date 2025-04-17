@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dog Translator</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f8ff;
+      overflow: hidden;
+    }
+
+    .screen {
+      display: none;
+      height: 100vh;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    /* Typing animation */
+    .typing-text {
+      font-size: 1.8rem;
+      color: #004080;
+      white-space: nowrap;
+      border-right: 2px solid;
+      width: 0;
+      overflow: hidden;
+      animation: typing 3s steps(30, end) forwards, blink 0.7s infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    .btn {
+      margin-top: 2rem;
+      padding: 12px 24px;
+      font-size: 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    /* Breed grid */
+    .breed-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 20px;
+      padding: 2rem;
+      max-width: 800px;
+      width: 90%;
+    }
+
+    .breed-grid img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #007bff;
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+
+    .breed-grid img:hover {
+      transform: scale(1.1);
+    }
+
+    .heading {
+      font-size: 1.6rem;
+      color: #004080;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen 1 -->
+  <div class="screen active" id="screen1">
+    <div class="typing-text" id="typing">Hi, can I know about your dog?</div>
+    <button class="btn" onclick="goToScreen2()">Get Started</button>
+  </div>
+
+  <!-- Screen 2 -->
+  <div class="screen" id="screen2">
+    <div class="heading">Choose your dog!</div>
+    <div class="breed-grid">
+      <img src="https://placedog.net/300?id=1" alt="Dog 1" title="Labrador">
+      <img src="https://placedog.net/300?id=2" alt="Dog 2" title="Beagle">
+      <img src="https://placedog.net/300?id=3" alt="Dog 3" title="Husky">
+      <img src="https://placedog.net/300?id=4" alt="Dog 4" title="Pug">
+      <img src="https://placedog.net/300?id=5" alt="Dog 5" title="German Shepherd">
+      <img src="https://placedog.net/300?id=6" alt="Dog 6" title="Golden Retriever">
+    </div>
+  </div>
+
+  <script>
+    function goToScreen2() {
+      document.getElementById("screen1").classList.remove("active");
+      document.getElementById("screen2").classList.add("active");
+    }
+  </script>
+
+</body>
+</html>
