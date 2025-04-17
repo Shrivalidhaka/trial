@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f0f8ff;
+      background-color: #000000;
       overflow: hidden;
     }
 
@@ -25,14 +25,24 @@
       display: flex;
     }
 
-    /* Typing animation */
-    .typing-text {
-      font-size: 1.8rem;
-      color: #004080;
-      white-space: nowrap;
-      border-right: 2px solid;
-      width: 0;
+    .typing-container {
+      width: 30ch; /* fit text width */
       overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid #a020f0;
+      animation: blink 0.75s step-end infinite;
+    }
+
+    .typing-text {
+      display: inline-block;
+      font-size: 1.8rem;
+      color: #a020f0;
+      animation: typing 3s steps(30, end) forwards;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 30ch }
     }
 
     @keyframes blink {
@@ -43,7 +53,7 @@
       margin-top: 2rem;
       padding: 12px 24px;
       font-size: 1rem;
-      background-color: #007bff;
+      background-color: #a020f0;
       color: white;
       border: none;
       border-radius: 30px;
@@ -52,10 +62,9 @@
     }
 
     .btn:hover {
-      background-color: #0056b3;
+      background-color: #7c14b4;
     }
 
-    /* Breed grid */
     .breed-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -70,7 +79,7 @@
       height: 100px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #007bff;
+      border: 3px solid #a020f0;
       transition: transform 0.2s;
       cursor: pointer;
     }
@@ -81,7 +90,7 @@
 
     .heading {
       font-size: 1.6rem;
-      color: #004080;
+      color: #a020f0;
       margin-bottom: 1rem;
     }
   </style>
@@ -90,7 +99,9 @@
 
   <!-- Screen 1 -->
   <div class="screen active" id="screen1">
-    <div class="typing-text" id="typing">Hi, can I know about your dog?</div>
+    <div class="typing-container">
+      <div class="typing-text">Hi, can I know about your dog?</div>
+    </div>
     <button class="btn" onclick="goToScreen2()">Get Started</button>
   </div>
 
@@ -116,3 +127,4 @@
 
 </body>
 </html>
+
